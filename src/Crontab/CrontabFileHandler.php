@@ -157,7 +157,7 @@ class CrontabFileHandler
 
         $this->writeToFile($crontab, $tmpFile);
 
-        $process = new Process($this->crontabCommand($crontab).' '.$tmpFile);
+        $process = new Process([$this->crontabCommand($crontab), $tmpFile]);
         $process->run();
 
         $this->error  = $process->getErrorOutput();
